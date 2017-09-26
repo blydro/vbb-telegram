@@ -57,7 +57,9 @@ const where = so(function* (ctx, tmp, freq, msg) {
 	yield tmp.set('station', station)
 	yield freq.inc(station.id, station.name)
 
-	yield ctx.keyboard(promptWhen(station), whenButtons)
+	const deps = yield api.deps(station.id, time("now"))
+	yield ctx.keyboard(render.deps(station, deps), ctx.commands)
+
 })
 
 
