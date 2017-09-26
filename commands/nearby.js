@@ -27,10 +27,8 @@ const location = so(function* (ctx, msg) {
 		text: `/a ${station.name}\u2063– departures`
 	})))
 
-	for (let station of closest) {
-		yield ctx.location(station.coordinates.latitude, station.coordinates.longitude)
-		yield ctx.keyboard(render.nearby(station), buttons)
-	}
+	yield ctx.keyboard("Select a stop", buttons)
+
 })
 
 
